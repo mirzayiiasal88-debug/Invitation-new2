@@ -47,17 +47,18 @@ body {
 const button = document.getElementById("openButton");
 const music = document.getElementById("music");
 
-button.onclick = async function () {
-  try {
-    music.muted = false;
-    music.volume = 1;
-    await music.play();
+button.addEventListener("click", function () {
 
-    button.textContent = "PLAYING";
-  } catch (error) {
-    button.textContent = "TAP AGAIN";
-  }
-};
+  music.currentTime = 0;
+  music.volume = 1;
+  music.play();
+
+  window.open(
+    "https://www.invitedrop.com/i/896d8a99-e9eb-4ed6-8505-0fb7fe46d767",
+    "_blank"
+  );
+
+});
 </script>
 
 </body>
