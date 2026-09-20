@@ -8,6 +8,7 @@
 <style>
 html, body {
   margin: 0;
+  padding: 0;
   width: 100%;
   height: 100%;
   background: #6d0f18;
@@ -29,26 +30,34 @@ body {
   font-size: 21px;
   letter-spacing: 5px;
   cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
 }
 </style>
 </head>
 
 <body>
 
-<button id="openButton">OPEN</button>
+<button id="openButton" type="button">OPEN</button>
 
-<audio id="music" loop preload="auto">
-  <source src="Arose%20mahtab%20.mp3" type="audio/mpeg">
+<audio id="music" preload="auto" loop playsinline>
+  <source src="./Arose%20mahtab%20.mp3" type="audio/mpeg">
 </audio>
 
 <script>
 const button = document.getElementById("openButton");
 const music = document.getElementById("music");
 
-button.addEventListener("click", function () {
-  music.currentTime = 0;
-  music.play();
-});
+button.onclick = async function () {
+  try {
+    music.muted = false;
+    music.volume = 1;
+    await music.play();
+
+    button.textContent = "PLAYING";
+  } catch (error) {
+    button.textContent = "TAP AGAIN";
+  }
+};
 </script>
 
 </body>
